@@ -110,7 +110,7 @@ class Register extends Component {
           onFocus={this.handleFieldFocus}
           error={this.passwordError}
           icon={
-            <FontAwesomeIcon onMouseDown={this.setPassVisible('password')} onMouseUp={this.setPassInvisible('password')} icon={['fal', 'eye']}/>
+            <FontAwesomeIcon onMouseDown={this.setPassVisible('password')} onMouseUp={this.setPassInvisible('password')} icon={['far', 'eye']}/>
           }
         />
         <Field
@@ -123,7 +123,7 @@ class Register extends Component {
           onFocus={this.handleFieldFocus}
           error={this.cPasswordError}
           icon={
-            <FontAwesomeIcon onMouseDown={this.setPassVisible('cPassword')} onMouseUp={this.setPassInvisible('cPassword')} icon={['fal', 'eye']}/>
+            <FontAwesomeIcon onMouseDown={this.setPassVisible('cPassword')} onMouseUp={this.setPassInvisible('cPassword')} icon={['far', 'eye']}/>
           }
         />
         <BottomButtons>

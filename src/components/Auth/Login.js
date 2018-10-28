@@ -100,7 +100,7 @@ class Login extends Component {
           onFocus={this.handleFieldFocus}
           error={this.passwordError}
           icon={
-            <FontAwesomeIcon onMouseDown={this.setPassVisible} onMouseUp={this.setPassUnvisible} icon={['fal', 'eye']}/>
+            <FontAwesomeIcon onMouseDown={this.setPassVisible} onMouseUp={this.setPassUnvisible} icon={['far', 'eye']}/>
           }
         />
         <BottomButtons>

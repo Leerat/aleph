@@ -4,9 +4,9 @@ import { Provider as MobxProvider } from 'mobx-react'
 import 'externals/normalize.min.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
-import { faNewspaper, faUserFriends, faEye } from '@fortawesome/pro-light-svg-icons'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
-library.add(faNewspaper, faUserFriends, faGithub, faEye)
+// import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faEye } from '@fortawesome/free-regular-svg-icons'
+library.add(faEye)
 
 import App from 'App'
 import storeMobx from 'storeMobx'
