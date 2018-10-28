@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router'
 import { observable } from "mobx"
 import { inject, observer } from "mobx-react"
@@ -12,6 +11,7 @@ import theme from 'UI/theme'
 import Typography from 'UI/Typography'
 import Field from 'UI/Field'
 import Button from 'UI/Button'
+import Message from 'UI/Message'
 import WithLoaded from 'UI/WithLoaded'
 
 const LoginWrapper = styled.div`
@@ -86,11 +86,11 @@ class Register extends Component {
 
   render() {
     const { userStore } = this.props
-    if (userStore.id) return <Redirect to='/login' />
+    if (userStore.id) return <Redirect to='/card' />
 
     return (
       <WithLoaded>
-        <Typography as="h3">Register</Typography>
+        <Typography as="h3">Register user</Typography>
         <Field
           name='email'
           placeholder='your@email.com'
@@ -127,11 +127,11 @@ class Register extends Component {
         />
         <BottomButtons>
           <Button onClick={this.tryRegister}>REGISTER</Button>
-          <LoginWrapper>
-            Already have an account? <Link to='/login'><StyledTypo>Login</StyledTypo></Link>
-          </LoginWrapper>
+          {/*<LoginWrapper>*/}
+            {/*Already have an account? <Link to='/login'><StyledTypo>Login</StyledTypo></Link>*/}
+          {/*</LoginWrapper>*/}
         </BottomButtons>
-        {/*{error && <Message status='error' content={error.message} />}*/}
+        {userStore.error && <Message status='error' content={userStore.error} />}
       </WithLoaded>
     )
   }

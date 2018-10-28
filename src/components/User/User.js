@@ -114,7 +114,7 @@ class User extends Component {
     if (this.countryCode === '')  { isError = true; this.countryCodeError = " " }
     if (this.phone === '')        { isError = true; this.phoneError = " " }
     if (this.occupation === '')   { isError = true; this.occupationError = "Shouldn't be empty" }
-    if (!file)               { isError = true; this.idImageError = "Shouldn't be empty" }
+    if (!file)                    { isError = true; this.idImageError = "Shouldn't be empty" }
 
     if (!isError) {
       const data = {
