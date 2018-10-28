@@ -25,20 +25,11 @@ const StyledLink = styled(Link)`
   text-decoration: underline;
 `
 
-const Image = styled.div`
-  text-align: center;
-  border-bottom: 1px solid #333;
-  padding-bottom: ${theme.interval};
-  #file {
-    display: none;
-  }
-`
-
 @inject('userStore')
 @observer
 class User extends Component {
-  @observable firstname = ''
-  @observable lastname = ''
+  @observable firstName = ''
+  @observable lastName = ''
   @observable gender = ''
   @observable birthDate = ''
   @observable idNumber = ''
@@ -46,8 +37,8 @@ class User extends Component {
   @observable phone = ''
   @observable occupation = ''
 
-  @observable firstnameError = ''
-  @observable lastnameError = ''
+  @observable firstNameError = ''
+  @observable lastNameError = ''
   @observable genderError = ''
   @observable birthDateError = ''
   @observable idNumberError = ''
@@ -95,31 +86,24 @@ class User extends Component {
     this[`${fieldName}Error`] = false
   }
 
-  handleFile = () => {
-    this.idImageError = ''
-    document.getElementById('file').click()
-  }
-
   tryNext = () => {
     const { history, userStore } = this.props
     let isError = false
-    const file = document.getElementById('file').files[0]
 
     //Sure we should validate these on server but....
-    if (this.firstname === '')    { isError = true; this.firstnameError = "Shouldn't be empty" }
-    if (this.lastname === '')     { isError = true; this.lastnameError = "Shouldn't be empty" }
+    if (this.firstName === '')    { isError = true; this.firstNameError = "Shouldn't be empty" }
+    if (this.lastName === '')     { isError = true; this.lastNameError = "Shouldn't be empty" }
     if (this.gender === '')       { isError = true; this.genderError = "Shouldn't be empty" }
     if (this.birthDate === '')    { isError = true; this.birthDateError = "Shouldn't be empty" }
     if (this.idNumber === '')     { isError = true; this.idNumberError = "Shouldn't be empty" }
     if (this.countryCode === '')  { isError = true; this.countryCodeError = " " }
     if (this.phone === '')        { isError = true; this.phoneError = " " }
     if (this.occupation === '')   { isError = true; this.occupationError = "Shouldn't be empty" }
-    if (!file)                    { isError = true; this.idImageError = "Shouldn't be empty" }
 
     if (!isError) {
       const data = {
-        firstname: this.firstname,
-        lastname: this.lastname,
+        firstName: this.firstName,
+        lastName: this.lastName,
         gender: this.gender,
         birthDate: this.birthDate,
         idNumber: this.idNumber,
@@ -127,7 +111,6 @@ class User extends Component {
         phone: this.phone,
         occupation: this.occupation
       }
-      userStore.tryPostImage(file)
       userStore.mergeData(data)
       history.push('/address')
     }
@@ -138,22 +121,22 @@ class User extends Component {
       <WithLoaded>
         <Typography as='h3'>User registration</Typography>
         <Field
-          name='firstname'
+          name='firstName'
           placeholder='Hi, that is you name?'
           label='Firstname'
-          value={this.firstname}
+          value={this.firstName}
           onChange={this.handleField}
           onFocus={this.handleFieldFocus}
-          error={this.firstnameError}
+          error={this.firstNameError}
         />
         <Field
-          name='lastname'
+          name='lastName'
           placeholder='And surname?'
           label='Lastname'
-          value={this.lastname}
+          value={this.lastName}
           onChange={this.handleField}
           onFocus={this.handleFieldFocus}
-          error={this.lastnameError}
+          error={this.lastNameError}
         />
         <Field
           name='gender'
@@ -162,25 +145,25 @@ class User extends Component {
         >
           Male
           <Radio
-            checked={this.gender === 'male'}
+            checked={this.gender == 1}
             onChange={this.handleGender}
-            value="male"
+            value={1}
             name="radio-button-demo"
             aria-label="male"
           />
           Female
           <Radio
-            checked={this.gender === 'female'}
+            checked={this.gender == 0}
             onChange={this.handleGender}
-            value="female"
+            value={0}
             name="radio-button-demo"
             aria-label="female"
           />
         </Field>
         <Field
           name='birthDate'
-          placeholder='DD MM YYYY'
-          mask='99 99 9999'
+          placeholder='YYYY MM DD'
+          mask='9999 99 99'
           label='Birthdate'
           value={this.birthDate}
           onChange={this.handleBirthDate}
@@ -225,15 +208,6 @@ class User extends Component {
           onFocus={this.handleFieldFocus}
           error={this.occupationError}
         />
-        <Field
-          label='Id image'
-          error={this.idImageError}
-        >
-          <Image>
-            <Button onClick={this.handleFile}>UPLOAD ID IMAGE</Button>
-            <input id='file' type="file" accept=".jpg, .jpeg, .png" />
-          </Image>
-        </Field>
         <BottomButtons>
           <Button onClick={this.tryNext}>NEXT</Button>
           <BackWrapper>

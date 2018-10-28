@@ -211,7 +211,7 @@ class Address extends Component {
           error={this.streetNameError}
         />
         <BottomButtons>
-          <Button onClick={this.tryNext}>DONE</Button>
+          <Button onClick={this.tryNext}>NEXT</Button>
           <BackWrapper>
             Some mistake? <StyledLink to='/user'>Go back</StyledLink>
           </BackWrapper>
