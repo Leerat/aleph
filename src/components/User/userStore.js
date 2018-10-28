@@ -5,6 +5,7 @@ import fetcher from 'utils/fetcher'
 class UserStore {
   @observable data = {}
   @observable error = false
+  @observable ok = false
 
   @action
   tryRegister = async(email, password, cpassword) => {
@@ -15,7 +16,7 @@ class UserStore {
     const json = await resp.json()
 
     if (json.status === 200) {
-      this.data = { user: json }
+      this.data.user = { email: json.email, id: json.id }
     } else {
       this.error = json.error
     }
@@ -43,6 +44,12 @@ class UserStore {
     const body = toJS(this.data)
     const resp = await fetcher.post('https://testapi.alephpay.com/api/kyc/validate', body)
     const json = await resp.json()
+
+    if (json.status === 200) {
+      this.ok = true
+    } else {
+      this.error = json.error
+    }
   }
 
   @action

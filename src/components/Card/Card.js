@@ -215,7 +215,7 @@ class Card extends Component {
           />
         </Two>
         <BottomButtons>
-          <Button onClick={this.tryActivate}>ACTIVATE</Button>
+          <Button onClick={this.tryActivate}>NEXT</Button>
         </BottomButtons>
       </WithLoaded>
     )

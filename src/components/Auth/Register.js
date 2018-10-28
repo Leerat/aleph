@@ -80,6 +80,7 @@ class Register extends Component {
 
     if (!isError) {
       userStore.tryRegister(this.email, this.password, this.cPassword)
+      userStore.error = false
       this.justRegistered = true
     }
   }

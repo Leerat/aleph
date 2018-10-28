@@ -11,6 +11,7 @@ import { Login, Register } from 'components/Auth'
 import Card from 'components/Card'
 import User from 'components/User'
 import Address from 'components/Address'
+import Finish from 'components/Finish'
 
 const Routes = inject('userStore')(observer( ({userStore}) => {
    return (
@@ -23,6 +24,7 @@ const Routes = inject('userStore')(observer( ({userStore}) => {
            <Route path="/card" component={Card} />
            <Route path="/user" component={User} />
            <Route path="/address" component={Address} />
+           <Route path="/finish" component={Finish} />
            {/*<PrivateArea isAuthenticated={authStore.token}>*/}
            {/*</PrivateArea>*/}
          </Layout>

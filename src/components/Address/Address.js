@@ -9,6 +9,7 @@ import theme from 'UI/theme'
 import WithLoaded from 'UI/WithLoaded'
 import Typography from 'UI/Typography'
 import Field, { Two } from 'UI/Field'
+import Message from 'UI/Message'
 import Button from 'UI/Button'
 
 import fetcher from 'utils/fetcher'
@@ -151,6 +152,8 @@ class Address extends Component {
   }
 
   render() {
+    const { userStore } = this.props
+
     return (
       <WithLoaded>
         <Typography as='h3'>Address confirm</Typography>
@@ -208,11 +211,12 @@ class Address extends Component {
           error={this.streetNameError}
         />
         <BottomButtons>
-          <Button onClick={this.tryNext}>NEXT</Button>
+          <Button onClick={this.tryNext}>DONE</Button>
           <BackWrapper>
             Some mistake? <StyledLink to='/user'>Go back</StyledLink>
           </BackWrapper>
         </BottomButtons>
+        {userStore.error && <Message status='error' content={userStore.error} />}
       </WithLoaded>
     )
   }
