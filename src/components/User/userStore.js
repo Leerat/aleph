@@ -46,6 +46,19 @@ class UserStore {
     const json = await resp.json()
 
     if (json.status === 200) {
+      this.registerCard()
+    } else {
+      this.error = json.error
+    }
+  }
+
+  @action
+  registerCard = async () => {
+    const body = toJS(this.data)
+    const resp = await fetcher.post('https://testapi.alephpay.com/api/kyc/register', body)
+    const json = await resp.json()
+    
+    if (json.status === 200) {
       this.ok = true
     } else {
       this.error = json.error
