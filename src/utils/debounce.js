@@ -1,0 +1,7 @@
+export default function debounce(fn, ms) {
+  let timer
+  return () => {
+    clearTimeout(timer)
+    timer = setTimeout(fn, ms)
+  }
+}
