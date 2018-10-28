@@ -1,17 +1,9 @@
-### Big social app with nodejs server and db in amazon
+### Aleph
 
-Envs in .env file
-```
-DB_HOST=host
-DB_NAME=name  
-DB_USER=user  
-DB_PASS=pass
-```
-
-To start app
+To start app in development mode
 ```
 npm install
-npm run deploy
+npm run dev
 ```
 
-App will start at `localhost:3000`
+App will start at `localhost:3030`
